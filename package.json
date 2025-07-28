@@ -2,6 +2,7 @@
   "name": "library-api",
   "version": "1.0.0",
   "main": "src/server.js",
+  "type": "module",
   "scripts": {
     "dev": "nodemon ./src/server.js",
     "format": "prettier --write .",
@@ -12,7 +13,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "pg": "^8.16.3"
   },
   "devDependencies": {
     "dotenv": "^17.2.1",

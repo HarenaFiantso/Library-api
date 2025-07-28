@@ -26,4 +26,4 @@ const getBooks = (_req, res) => {
   res.json(books);
 };
 
-export { getBooks }
+export { getBooks };
