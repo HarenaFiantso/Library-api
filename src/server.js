@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { pool } from './db.js';
+import { db } from './db.js';
 import bookRoute from './routes/book.route.js';
 
 dotenv.config();
@@ -23,11 +23,11 @@ const createServer = () => {
 
 const startServer = async () => {
   try {
-    await pool.connect();
+    await db.connect();
     console.log('Connected to PostgreSQL database');
 
     const app = createServer();
-    app.set('db', pool);
+    app.set('db', db);
 
     app.listen(PORT, () => {
       console.log(`Server is running at http://localhost:${PORT}`);
