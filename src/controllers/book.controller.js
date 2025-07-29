@@ -52,4 +52,20 @@ const saveOrUpdateBook = async (req, res) => {
   }
 };
 
-export { getBooks, getBookById, saveOrUpdateBook };
+const deleteBook = async (req, res) => {
+  try {
+    const { bookId } = req.params;
+    const { rowCount } = await db.query('DELETE FROM book WHERE id = $1', [
+      bookId,
+    ]);
+    if (rowCount === 0) {
+      return res.status(404).json({ error: 'Book not found' });
+    }
+    res.status(200).json({ message: 'Book deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting book:', error);
+    res.status(500).json({ error: 'Failed to delete book' });
+  }
+};
+
+export { getBooks, getBookById, saveOrUpdateBook, deleteBook };
